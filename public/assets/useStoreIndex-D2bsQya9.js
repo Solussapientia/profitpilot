@@ -1,0 +1,1 @@
+import{k as o}from"./main-C5W3NX7X.js";function a(t){return o({select:e=>t?.select?t.select(e.location):e.location})}function s(){const e=a({select:n=>n.pathname}).split("/")[2];return e?Number(e):null}export{a,s as u};

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 372 354" width="372" height="354" fill="none">
+  <rect x="8" y="16" width="340" height="84" rx="18" fill="#101010" stroke="#3b82f6" stroke-width="2"/>
+  <text x="32" y="52" fill="#ffffff" font-family="ui-sans-serif, system-ui, sans-serif" font-size="22" font-weight="600">Open today</text>
+  <text x="32" y="78" fill="#ffffff" fill-opacity="0.55" font-family="ui-sans-serif, system-ui, sans-serif" font-size="16">Until 7:00 pm</text>
+  <rect x="8" y="124" width="340" height="72" rx="18" fill="#161616"/>
+  <text x="32" y="168" fill="#ffffff" font-family="ui-sans-serif, system-ui, sans-serif" font-size="22" font-weight="600">Get directions</text>
+  <rect x="8" y="216" width="340" height="72" rx="18" fill="#161616"/>
+  <text x="32" y="260" fill="#ffffff" font-family="ui-sans-serif, system-ui, sans-serif" font-size="22" font-weight="600">Call the shop</text>
+</svg>

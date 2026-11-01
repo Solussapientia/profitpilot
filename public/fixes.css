@@ -1,0 +1,476 @@
+/* The hero is a viewport-height flex column. Its copy block uses
+   overflow:hidden, so on shorter windows that block shrinks and clips
+   the headline, subtitle, and buttons. Let the section grow instead. */
+div.h-dvh.flex.flex-col.justify-center {
+  height: auto;
+  min-height: 100dvh;
+}
+
+div.h-dvh.flex.flex-col.justify-center > .overflow-hidden {
+  flex-shrink: 0;
+  overflow: visible;
+}
+
+@media (max-width: 1023px) {
+  .line-clamp-2 {
+    -webkit-line-clamp: unset !important;
+    line-clamp: unset !important;
+    overflow: visible !important;
+    display: block !important;
+  }
+
+  img[alt="You run the shop"] {
+    position: relative !important;
+    inset: auto !important;
+    display: block;
+    width: calc(100% - 1.25rem) !important;
+    height: auto !important;
+    margin: 0.7rem auto 0 !important;
+    object-fit: contain !important;
+    border-radius: 1rem;
+  }
+
+  div:has(> img[alt="You run the shop"]) {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  a:has(img[alt="You run the shop"]) > .mt-\[-110px\] {
+    margin-top: 0 !important;
+  }
+
+  h1.flex.items-center {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    row-gap: 0.35rem;
+  }
+}
+
+.pp-pill {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.72);
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s, border-color 0.25s;
+}
+.pp-pill[aria-pressed="true"],
+.pp-pill:hover {
+  background: #fff;
+  color: #090909;
+  border-color: #fff;
+}
+
+.pp-browser {
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  background: #101010;
+}
+.pp-preview {
+  transition: opacity 0.28s ease;
+}
+.pp-preview.is-swapping {
+  opacity: 0.35;
+}
+
+.pp-module {
+  width: 100%;
+  text-align: left;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  color: #fff;
+  border-radius: 1rem;
+  padding: 0.9rem 1rem;
+  cursor: pointer;
+  transition: border-color 0.25s, transform 0.25s, background 0.25s;
+}
+.pp-module:hover {
+  border-color: rgba(255, 255, 255, 0.28);
+  transform: translateY(-2px);
+}
+.pp-module[aria-pressed="true"] {
+  border-color: rgba(250, 204, 21, 0.7);
+  background: rgba(250, 204, 21, 0.06);
+}
+
+.pp-compare {
+  position: relative;
+  height: 320px;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  user-select: none;
+  touch-action: none;
+}
+.pp-compare-pane {
+  position: absolute;
+  inset: 0;
+  padding: 1.5rem;
+}
+.pp-compare-before {
+  background: #141414;
+  width: 52%;
+  overflow: hidden;
+  border-right: 2px solid rgba(255, 255, 255, 0.35);
+}
+.pp-compare-after {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  background:
+    radial-gradient(600px 180px at 20% 120%, rgba(96, 165, 250, 0.35), transparent 60%),
+    #0c0c0c;
+}
+.pp-compare input[type="range"] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: ew-resize;
+  margin: 0;
+}
+.pp-compare-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #fff;
+  pointer-events: none;
+}
+.pp-compare-handle span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: #fff;
+  color: #090909;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+}
+
+.pp-faq-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.pp-faq-item button {
+  width: 100%;
+  background: none;
+  border: 0;
+  color: #fff;
+  text-align: left;
+  padding: 1.1rem 0;
+  font-size: 1.05rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.pp-faq-item p {
+  display: none;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0 0 1rem;
+  max-width: 40rem;
+  line-height: 1.5;
+}
+.pp-faq-item.open p {
+  display: block;
+}
+
+img[alt="Customers looking for a business like yours"] {
+  z-index: 0 !important;
+}
+.pp-map-layer {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+}
+.pp-float-card {
+  position: absolute;
+  z-index: 30;
+  min-width: 180px;
+  padding: 0.6rem 0.8rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: #090909;
+  color: #fff;
+  text-align: left;
+  pointer-events: none;
+  transform: translate(18px, -50%);
+}
+.pp-float-card[hidden] {
+  display: none;
+}
+.pp-float-card[data-anchor="above"] {
+  transform: translate(-50%, calc(-100% - 16px));
+}
+.pp-float-card[data-anchor="left"] {
+  transform: translate(calc(-100% - 16px), -50%);
+}
+.pp-float-card strong {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.pp-float-card span {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.62);
+}
+.pp-place {
+  position: absolute;
+  z-index: 1;
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: #fff;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+  cursor: pointer;
+}
+.pp-place.is-active {
+  z-index: 40;
+  background: #facc15;
+  box-shadow: 0 0 0 0 rgba(250, 204, 21, 0.55);
+  animation: pp-ping 2.2s ease-out infinite;
+}
+@keyframes pp-ping {
+  0% { box-shadow: 0 0 0 0 rgba(250, 204, 21, 0.55); }
+  70% { box-shadow: 0 0 0 14px rgba(250, 204, 21, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(250, 204, 21, 0); }
+}
+.pp-place-card {
+  display: none;
+  position: absolute;
+  z-index: 41;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  min-width: 180px;
+  text-align: left;
+  background: #090909;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 14px;
+  padding: 0.55rem 0.75rem;
+  color: #fff;
+  backdrop-filter: blur(10px);
+  pointer-events: none;
+}
+.pp-place.is-active .pp-place-card {
+  display: block;
+}
+.pp-place[data-anchor="above"] .pp-place-card {
+  left: 50%;
+  top: auto;
+  bottom: 18px;
+  transform: translateX(-50%);
+}
+.pp-place[data-anchor="left"] .pp-place-card {
+  left: auto;
+  right: 18px;
+}
+.pp-place-card strong {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.pp-place-card span {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.62);
+}
+.pp-contact {
+  margin: 4rem auto 6rem;
+}
+.pp-contact-card {
+  display: grid;
+  gap: 2.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+  background:
+    radial-gradient(520px 220px at 100% 0%, rgba(250, 204, 21, 0.08), transparent 60%),
+    rgba(255, 255, 255, 0.03);
+  padding: 2rem;
+}
+@media (min-width: 1024px) {
+  .pp-contact-card {
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 4rem;
+    padding: 3.5rem;
+    align-items: start;
+  }
+}
+.pp-contact h2 {
+  margin: 0.75rem 0 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  font-weight: 500;
+}
+.pp-contact .pp-kicker {
+  color: #facc15;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+.pp-contact .pp-lead {
+  margin: 1rem 0 0;
+  max-width: 28rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+.pp-form {
+  display: grid;
+  gap: 0.9rem;
+}
+.pp-form-row {
+  display: grid;
+  gap: 0.9rem;
+}
+@media (min-width: 700px) {
+  .pp-form-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.pp-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.pp-field span {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+.pp-field input,
+.pp-field textarea {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  border-radius: 0.85rem;
+  padding: 0.8rem 0.95rem;
+  font: inherit;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+.pp-field textarea {
+  min-height: 7.5rem;
+  resize: vertical;
+}
+.pp-field input:focus,
+.pp-field textarea:focus {
+  border-color: rgba(255, 255, 255, 0.45);
+  background: rgba(0, 0, 0, 0.65);
+}
+.pp-form button {
+  justify-self: start;
+  margin-top: 0.35rem;
+  height: 2.5rem;
+  padding: 0 1.1rem;
+  border: 0;
+  border-radius: 0.85rem;
+  background: #fff;
+  color: #090909;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+.pp-form button:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+.pp-admin {
+  min-height: 100dvh;
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 4rem 1.25rem 5rem;
+}
+.pp-admin h1 {
+  margin: 0.4rem 0 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+.pp-admin-lock,
+.pp-inquiry {
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 1.5rem;
+}
+.pp-admin-lock {
+  max-width: 28rem;
+  display: grid;
+  gap: 1rem;
+}
+.pp-admin-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.pp-admin-head button,
+.pp-admin-lock button {
+  height: 2.5rem;
+  padding: 0 1rem;
+  border: 0;
+  border-radius: 0.85rem;
+  background: #fff;
+  color: #090909;
+  font: inherit;
+  cursor: pointer;
+}
+.pp-admin-list {
+  display: grid;
+  gap: 0.8rem;
+}
+.pp-inquiry p {
+  margin: 0.35rem 0 0;
+  color: rgba(255, 255, 255, 0.62);
+}
+.pp-inquiry a {
+  color: #fff;
+}
+.pp-inquiry-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.pp-inquiry time {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.8rem;
+}
+.pp-inquiry-about {
+  white-space: pre-wrap;
+}
+.pp-form .pp-note {
+  margin: 0;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+.pp-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.35rem 0.7rem;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.04);
+}

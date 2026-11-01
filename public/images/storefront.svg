@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 560" width="860" height="560" fill="none">
+  <rect width="860" height="560" rx="28" fill="#121212"/>
+  <rect x="28" y="24" width="12" height="12" rx="6" fill="#ff5f57"/>
+  <rect x="48" y="24" width="12" height="12" rx="6" fill="#febc2e"/>
+  <rect x="68" y="24" width="12" height="12" rx="6" fill="#28c840"/>
+  <text x="360" y="36" fill="#ffffff" fill-opacity="0.45" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14">yourbusiness.com</text>
+  <text x="48" y="110" fill="#ffffff" font-family="ui-sans-serif, system-ui, sans-serif" font-size="40" font-weight="650">Northside Studio</text>
+  <text x="48" y="150" fill="#ffffff" fill-opacity="0.55" font-family="ui-sans-serif, system-ui, sans-serif" font-size="18">Open today until 7pm · 12 min away</text>
+  <rect x="48" y="180" width="180" height="48" rx="12" fill="#ffffff"/>
+  <text x="78" y="210" fill="#111111" font-family="ui-sans-serif, system-ui, sans-serif" font-size="16" font-weight="650">Get directions</text>
+  <rect x="244" y="180" width="140" height="48" rx="12" fill="#2a2a2a"/>
+  <text x="276" y="210" fill="#ffffff" font-family="ui-sans-serif, system-ui, sans-serif" font-size="16">Call shop</text>
+  <rect x="48" y="260" width="360" height="250" rx="18" fill="#1c1c1c"/>
+  <text x="72" y="300" fill="#ffffff" fill-opacity="0.5" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14">Services</text>
+  <text x="72" y="340" fill="#ffffff" font-family="ui-sans-serif, system-ui, sans-serif" font-size="22">Cuts and color</text>
+  <text x="72" y="380" fill="#ffffff" font-family="ui-sans-serif, system-ui, sans-serif" font-size="22">Walk-ins welcome</text>
+  <text x="72" y="420" fill="#ffffff" font-family="ui-sans-serif, system-ui, sans-serif" font-size="22">Book a visit</text>
+  <rect x="440" y="260" width="372" height="250" rx="18" fill="#1a2430"/>
+  <text x="464" y="300" fill="#ffffff" fill-opacity="0.55" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14">Find the shop</text>
+  <circle cx="626" cy="400" r="10" fill="#60a5fa"/>
+  <circle cx="626" cy="400" r="28" fill="#60a5fa" fill-opacity="0.25"/>
+  <text x="560" y="450" fill="#ffffff" font-family="ui-sans-serif, system-ui, sans-serif" font-size="16">214 Market Street</text>
+</svg>

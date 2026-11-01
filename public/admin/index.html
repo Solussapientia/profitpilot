@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Profit Pilot</title>
+    <link rel="icon" href="/images/pp_dark.png" />
+    <link rel="stylesheet" href="/fixes.css" />
+    <link rel="stylesheet" href="/_astro/aup.DfQKwgTu.css" />
+  </head>
+  <body class="bg-[#090909] text-white">
+    <main class="pp-admin">
+      <form id="lock" class="pp-admin-lock">
+        <div class="pp-kicker">Profit Pilot</div>
+        <h1>Password</h1>
+        <label class="pp-field">
+          <span>Enter the code</span>
+          <input id="code" type="password" inputmode="numeric" autocomplete="off" autofocus />
+        </label>
+        <p id="lock-error" class="pp-note" hidden>That code is not right.</p>
+        <button type="submit">Continue</button>
+      </form>
+
+      <section id="board" hidden>
+        <div class="pp-admin-head">
+          <div>
+            <div class="pp-kicker">Inquiries</div>
+            <h1>Project requests</h1>
+          </div>
+          <button id="lockout" type="button">Lock</button>
+        </div>
+        <div id="list" class="pp-admin-list"></div>
+      </section>
+    </main>
+    <script>
+      const KEY = "pp-admin-key";
+      const lock = document.getElementById("lock");
+      const board = document.getElementById("board");
+      const list = document.getElementById("list");
+      const error = document.getElementById("lock-error");
+
+      function when(iso) {
+        const date = new Date(iso);
+        return date.toLocaleString(undefined, {
+          month: "short",
+          day: "numeric",
+          hour: "numeric",
+          minute: "2-digit",
+        });
+      }
+
+      function render(rows) {
+        if (!rows.length) {
+          list.innerHTML = '<p class="pp-lead">No inquiries yet.</p>';
+          return;
+        }
+        list.innerHTML = rows
+          .map(
+            (row) => `<article class="pp-inquiry">
+              <div class="pp-inquiry-top"><strong>${escapeHtml(row.business || "Untitled")}</strong><time>${when(row.createdAt)}</time></div>
+              <p>${escapeHtml(row.name)} · ${escapeHtml(row.city || "No city")}</p>
+              <p><a href="mailto:${escapeHtml(row.email)}">${escapeHtml(row.email)}</a> · ${escapeHtml(row.phone)}</p>
+              <p class="pp-inquiry-about">${escapeHtml(row.about || "")}</p>
+            </article>`
+          )
+          .join("");
+      }
+
+      function escapeHtml(value) {
+        return String(value)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      }
+
+      async function openBoard(key) {
+        const response = await fetch("/api/inquiries", { headers: { "x-admin-key": key } });
+        if (!response.ok) {
+          sessionStorage.removeItem(KEY);
+          return false;
+        }
+        sessionStorage.setItem(KEY, key);
+        render(await response.json());
+        lock.hidden = true;
+        board.hidden = false;
+        return true;
+      }
+
+      lock.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        error.hidden = true;
+        const code = document.getElementById("code").value.trim();
+        const ok = await openBoard(code);
+        if (!ok) error.hidden = false;
+      });
+
+      document.getElementById("lockout").addEventListener("click", () => {
+        sessionStorage.removeItem(KEY);
+        board.hidden = true;
+        lock.hidden = false;
+        document.getElementById("code").value = "";
+      });
+
+      const saved = sessionStorage.getItem(KEY);
+      if (saved) openBoard(saved);
+    </script>
+  </body>
+</html>

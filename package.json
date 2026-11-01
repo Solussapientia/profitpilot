@@ -1,0 +1,13 @@
+{
+  "name": "profit-pilot",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Profit Pilot marketing site (template from moneymotion.io mirror)",
+  "scripts": {
+    "mirror": "node scripts/mirror.mjs",
+    "rebrand": "node scripts/rebrand.mjs",
+    "setup": "npm run mirror && npm run rebrand",
+    "dev": "node server.mjs",
+    "start": "npm run dev"
+  }
+}
